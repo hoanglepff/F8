@@ -25,7 +25,7 @@ import java.util.logging.*;
  *
  * @author Longvh
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/logincontroller"})
+
 public class LoginController extends HttpServlet {
 
     @Override
@@ -44,16 +44,17 @@ public class LoginController extends HttpServlet {
 
         loginDao dao = new loginDao();
         User a = dao.getUser(email, password);
-//        Test test = new Test();
-//        List<String>  aaa = new ArrayList<>();
-//        aaa.add(email);
-//        aaa.add(password);
-//        test.tesOutut(request, response, aaa);
         if (a != null) {
-            response.sendRedirect("homecontroller");
+            if(a.getRole().equals("admin")){
+                session.setAttribute("user", a);
+                request.getRequestDispatcher("view/user/dashboard.jsp").forward(request, response);
+            }
+            session.setAttribute("user", a);
+            request.getRequestDispatcher("view/user/home.jsp").forward(request, response);
         } else {
-            session.setAttribute("acc", email);
-            response.sendRedirect("logincontroller");
+            request.setAttribute("errorMessage", "Ten dang nhap hoac mat khau sai");
+            //response.sendRedirect("view/user/home.jsp");
+            request.getRequestDispatcher("view/user/login.jsp").forward(request, response);
         }
 
     }

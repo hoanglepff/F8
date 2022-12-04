@@ -22,7 +22,7 @@
                     </div>
                     <h1>Đăng nhập vào F8</h1>
                 </div>
-                <form class="login-form" method="post" action="http://localhost:8080/FullStackF8/logincontroller">
+                <form class="login-form" method="post" action="login">
                     <div class="login-form-content">
                         <div class="form-item">
                             <label for="email">Enter email</label>

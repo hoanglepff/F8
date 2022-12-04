@@ -23,11 +23,11 @@
                     </div>
                     <h1>Đăng ký tài khoản F8</h1>
                 </div>
-                <form class="login-form">
+                <form class="login-form" method="post" action="register">
                     <div class="login-form-content">
                         <div class="form-item">
                             <label for="name">Enter your name</label>
-                            <input type="text" id="inputName" name="inputName">
+                            <input type="text" id="inputName" name="inputName">${errorMessage}
                         </div>
                         <div class="form-item">
                             <label for="email">Enter email</label>
